@@ -1,13 +1,8 @@
 let mysql = require('mysql');
+let config = require('./config');
 
 // Create connection
-let conn = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: '',
-  port: 3306,
-  database: 'tododb'
-});
+let conn = mysql.createConnection(config);
 
 // Call the connect method
 conn.connect((err) => {
@@ -31,6 +26,6 @@ conn.connect((err) => {
       console.log("ERROR:", err.message);
     }
     conn.end();
-  })
+  });
 });
 
