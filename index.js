@@ -15,15 +15,23 @@ conn.connect((err) => {
     console.error("ERROR: ", err.message);
     return;
   }
-  console.log("Connected to the MySQL Server.");
+
+  let createTodos = `
+    CREATE TABLE IF NOT EXISTS todos(
+      id int PRIMAY KEY AUTO_INCREMENT,
+      title varchar(255) NOT NULL,
+      completed tinyint(1) not null default 0
+    )`;
+
+  conn.query(createTodos, function (err, results, fields) {
+    console.log("FIELDS: ", fields);
+    console.log("RESULTS: ", results);
+
+    if (err) {
+      console.log("ERROR:", err.message);
+      return;
+    }
+    conn.end();
+  })
 });
 
-// End method ensures that all remaining queries
-// are always executed before the db connection is closed
-
-conn.end((err) => {
-  if (err) {
-    return console.log("ERROR: ", err.message);
-  }
-  console.log("Connection ended!");
-})
