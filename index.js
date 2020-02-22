@@ -18,7 +18,7 @@ conn.connect((err) => {
 
   let createTodos = `
     CREATE TABLE IF NOT EXISTS todos(
-      id int PRIMAY KEY AUTO_INCREMENT,
+      id int PRIMARY KEY AUTO_INCREMENT,
       title varchar(255) NOT NULL,
       completed tinyint(1) not null default 0
     )`;
@@ -29,7 +29,6 @@ conn.connect((err) => {
 
     if (err) {
       console.log("ERROR:", err.message);
-      return;
     }
     conn.end();
   })
