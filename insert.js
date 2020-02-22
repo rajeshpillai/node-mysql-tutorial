@@ -5,7 +5,7 @@ let connection = mysql.createConnection(config);
 // insert statment
 let sql = `
   INSERT INTO todos(title,completed)
-      VALUES('Learn how to insert a new row on ${new Date}',true)
+      VALUES('Learn how to insert a new row on ${new Date}',false)
 `;
 
 // execute the insert statment
